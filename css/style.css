@@ -56,7 +56,7 @@ h1,h2,h3,h4,h5,h6 {
  }
 
  .btn-main{
-    background: linear-gradient(to right, #00e0fe, #1107fe);
+   background: linear-gradient(to right, #00e0fe, #1107fe);
     border-radius: 100px;
     border: none;
     font-weight: 600;
@@ -89,7 +89,7 @@ h1,h2,h3,h4,h5,h6 {
    padding: 10px;
  }
  .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show> .nav-link{
-   background: -webkit-linear-gradient(#00e0fe, #1107fe);
+  background: -webkit-linear-gradient(#00e0fe, #1107fe);
    -webkit-background-clip: text;
    -webkit-text-fill-color: transparent;
  }
@@ -107,32 +107,34 @@ h1,h2,h3,h4,h5,h6 {
 
  }
 
- .service .service-img{
-   position: relative;
- }
+ .service .service-img {
+    position: relative; /* This is correct for positioning the icon */
+    overflow: visible; /* Keep this if you need to clip content within .service-img */
+}
 
- .service .service-img .icon{
-   width: 90px;
-   height: 90px;
-   background:linear-gradient(to right, #00e0fe, #1107fe);
-   color: #fff;
-   border-radius: 100px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   position: absolute;  
-   bottom: -45px;
-   left: 50%;
-   transform: translateX(-50%);
+.service .service-img .icon {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(to right, #00e0fe, #1107fe);
+    color: #fff;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 100%;
+    bottom: 0px; /* Position the top edge at the vertical center */
+    left: 50%; /* Position the left edge at the horizontal center */
+    transform: translate(-50%, -50%); /* Move it back by half its width and height for true centering */
+    z-index: 1; /* Ensure it's above the image */
+}
 
- }
-
- .service .service-img .icon i{
-   font-size: 36px;
- }
+.service .service-img .icon i {
+    font-size: 36px;
+}
 
  .feature i{
-   background: -webkit-linear-gradient(#00e0fe, #1107fe);
+   background: -webkit-linear-gradient( #00e0fe, #1107fe );
    -webkit-background-clip: text;
    -webkit-text-fill-color: transparent;
    font-size: 54px;
@@ -182,11 +184,199 @@ h1,h2,h3,h4,h5,h6 {
  }
 
  footer{
-   background:linear-gradient(to right, #00e0fe, #1107fe);
+   background:linear-gradient(to right,  #00e0fe, #1107fe) ;
    color: #fff;
  }
  
 footer a{
    color: #fff;
    font-size: 25px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 2rem; /* Adjust the size of the icons */
+    color: white; /* Ensure the icon color is white */
+    text-decoration: none; /* Remove underlines from links */
+}
+
+.social-links a:hover {
+    color: #ddd; /* Slightly lighter on hover for interaction feedback */
+}
+
+/* Style for placeholder text inside the white form */
+.bg-white input.form-control::placeholder,
+.bg-white textarea.form-control::placeholder {
+    color: #777; /* Or any dark color you prefer for the placeholder text, e.g., #999, #555 */
+}
+
+.bg-white input.form-control,
+.bg-white textarea.form-control {
+    color: #333; /* Or any dark color you prefer for the input text, e.g., black (#000), a dark grey */
+}
+
+.service-img {
+    position: relative;
+    /* width: 100%;  Already defined, but good to keep here for context */
+    height: 250px; /* Set a fixed height for all service images */
+    overflow: hidden;  /* Clip any overflowing image content */
+    border-radius: 10px; /* Optional: Add rounded corners to the image container */
+}
+
+.service-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Important:  Scales the image to fill the container */
+    border-radius: 10px; /* Optional: Ensure rounded corners apply to the image as well */
+}
+
+/* Basic gallery container styling */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust minmax as needed */
+    gap: 15px;
+    padding-bottom: 0;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    /* aspect-ratio: 1 / 1; /* Maintain a square container for consistent layout - REMOVED */
+}
+
+.gallery-thumbnail {
+    display: block;
+    width: 100%; /* Make the image fill the width of its container */
+    height: 150px; /* Set a fixed height for all thumbnails - adjust this value */
+    object-fit: cover; /* Crop images to fit the container while maintaining aspect ratio */
+    border-radius: 5px; /* Optional */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional */
+    cursor: pointer;
+}
+
+/* Style for the about content (remains the same) */
+.about-content {
+    margin-bottom: 30px;
+}
+
+.about-content p {
+    line-height: 1.6;
+    color: #555; /* Adjust color as needed */
+}
+
+/* Basic styling for the section (remains the same) */
+#about {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: #f9f9f9; /* Optional: a light background color */
+}
+
+#about .divider {
+    width: 60px;
+    height: 2px;
+    background-color: #007bff; /* Your accent color */
+    margin: 10px auto 20px;
+}
+
+#about h1 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#about p {
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* Optional: Adjustments for smaller screens */
+@media (max-width: 768px) {
+    .gallery-container {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust for smaller screens */
+        gap: 10px;
+    }
+}
+
+.founder-image-container {
+    width: 200px; /* Example width - adjust based on your preference and Lawrence's rendered size */
+    height: 250px; /* Example height - adjust based on your preference and Lawrence's rendered size */
+    overflow: hidden;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+.founder-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.col-md-6.text-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Style for carousel captions */
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.6); /* semi-transparent black */
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+/* Make sure video fits like images */
+.carousel-item video {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/* Optional: Rounded corners for images */
+.carousel-item img {
+  border-radius: 5px;
+}
+
+/* Ensure aspect ratio is maintained on smaller screens */
+.ratio {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* Caption text styling */
+.carousel-caption h5 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.carousel-caption p {
+  font-size: 1rem;
+  color: #ddd;
+}
+
+.carousel-item img,
+.carousel-item video {
+  transition: transform 0.3s ease;
+}
+
+.carousel-item:hover img,
+.carousel-item:hover video {
+  transform: scale(1.02);
+}
+
+.map-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
